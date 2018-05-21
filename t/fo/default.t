@@ -6,7 +6,7 @@ use Test::Mojo;
 use Data::Dumper;
 
 plugin 'SecurityHeader' => [
-    'X-Content-Type-Options'
+    'X-Frame-Options'
 ];
 
 get '/' => sub {
@@ -15,6 +15,6 @@ get '/' => sub {
 };
 
 my $t = Test::Mojo->new;
-$t->get_ok('/')->status_is(200)->header_is( 'X-Content-Type-Options', 'nosniff' );
+$t->get_ok('/')->status_is(200)->header_is( 'X-Frame-Options', 'DENY' );
 
 done_testing();
