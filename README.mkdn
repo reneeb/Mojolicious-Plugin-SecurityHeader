@@ -1,0 +1,116 @@
+[![Build Status](https://travis-ci.org/reneeb/Mojolicious-Plugin-SecurityHeader.svg?branch=master)](https://travis-ci.org/reneeb/Mojolicious-Plugin-SecurityHeader)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Mojolicious-Plugin-SecurityHeader.png)](http://cpants.charsbar.org/dist/overview/Mojolicious-Plugin-SecurityHeader)
+[![GitHub issues](https://img.shields.io/github/issues/reneeb/Mojolicious-Plugin-SecurityHeader.svg)](https://github.com/reneeb/Mojolicious-Plugin-SecurityHeader/issues)
+
+# NAME
+
+Mojolicious::Plugin::SecurityHeader
+
+# VERSION
+
+version 0.01
+
+# SYNOPSIS
+
+    # Mojolicious
+    $self->plugin('SecurityHeader');
+
+    # define which security headers should be used
+    $self->plugin('SecurityHeader' => [
+        'Strict-Transport-Security' => -1,
+        'X-Xss-Protection',
+        'X-Content-Type-Options' => 'nosniff',
+    ]);
+
+    # Mojolicious::Lite
+    plugin 'SecurityHeader';
+
+# DESCRIPTION
+
+[Mojolicious::Plugin::SecurityHeader](https://metacpan.org/pod/Mojolicious::Plugin::SecurityHeader) is a [Mojolicious](https://metacpan.org/pod/Mojolicious) plugin.
+
+# NAME
+
+Mojolicious::Plugin::SecurityHeader - Mojolicious Plugin
+
+# SECURITY HEADER
+
+- Strict-Transport-Security
+- Public-Key-Pins
+- Referrer-Policy 
+- X-Content-Type-Options
+- X-Frame-Options
+- X-Xss-Protection
+
+# METHODS
+
+[Mojolicious::Plugin::SecurityHeader](https://metacpan.org/pod/Mojolicious::Plugin::SecurityHeader) inherits all methods from
+[Mojolicious::Plugin](https://metacpan.org/pod/Mojolicious::Plugin) and implements the following new ones.
+
+## register
+
+    $plugin->register(Mojolicious->new);
+
+Register plugin in [Mojolicious](https://metacpan.org/pod/Mojolicious) application.
+
+# SEE ALSO
+
+[Mojolicious](https://metacpan.org/pod/Mojolicious), [Mojolicious::Guides](https://metacpan.org/pod/Mojolicious::Guides), [http://mojolicious.org](http://mojolicious.org).
+
+
+
+## Development
+
+The distribution is contained in a Git repository, so simply clone the
+repository
+
+```
+$ git clone http://github.com/reneeb/Mojolicious-Plugin-SecurityHeader.git
+```
+
+and change into the newly-created directory.
+
+```
+$ cd Mojolicious-Plugin-SecurityHeader
+```
+
+The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
+build the distribution, hence this will need to be installed before
+continuing:
+
+```
+$ cpanm Dist::Zilla
+```
+
+To install the required prequisite packages, run the following set of
+commands:
+
+```
+$ dzil authordeps --missing | cpanm
+$ dzil listdeps --author --missing | cpanm
+```
+
+The distribution can be tested like so:
+
+```
+$ dzil test
+```
+
+To run the full set of tests (including author and release-process tests),
+add the `--author` and `--release` options:
+
+```
+$ dzil test --author --release
+```
+
+# AUTHOR
+
+Renee Baecker &lt;reneeb@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2018 by Renee Baecker.
+
+This is free software, licensed under:
+
+    The Artistic License 2.0 (GPL Compatible)
