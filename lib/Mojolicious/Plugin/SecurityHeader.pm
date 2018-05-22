@@ -1,7 +1,7 @@
 package Mojolicious::Plugin::SecurityHeader;
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub register {
     my ($self, $app, $headers) = @_;
@@ -41,7 +41,7 @@ sub register {
 
     my %headers_default = (
         'Referrer-Policy'           => "",
-        'Strict-Transport-Security' => -1,
+        'Strict-Transport-Security' => 31536000,
         'X-Content-Type-Options'    => "nosniff",
         'X-Xss-Protection'          => '1; mode=block',
         'X-Frame-Options'           => 'DENY',
