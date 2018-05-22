@@ -1,4 +1,5 @@
 package Mojolicious::Plugin::SecurityHeader;
+# ABSTRACT: Mojolicious Plugin
 use Mojo::Base 'Mojolicious::Plugin';
 
 our $VERSION = '0.03';
