@@ -4,7 +4,7 @@
 
 # NAME
 
-Mojolicious::Plugin::SecurityHeader
+Mojolicious::Plugin::SecurityHeader - Mojolicious Plugin
 
 # VERSION
 
@@ -28,10 +28,6 @@ version 0.04
 # DESCRIPTION
 
 [Mojolicious::Plugin::SecurityHeader](https://metacpan.org/pod/Mojolicious::Plugin::SecurityHeader) is a [Mojolicious](https://metacpan.org/pod/Mojolicious) plugin.
-
-# NAME
-
-Mojolicious::Plugin::SecurityHeader - Mojolicious Plugin
 
 # SECURITY HEADER
 
