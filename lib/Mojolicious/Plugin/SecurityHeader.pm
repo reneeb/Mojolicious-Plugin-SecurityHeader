@@ -1,4 +1,5 @@
 package Mojolicious::Plugin::SecurityHeader;
+# ABSTRACT: Mojolicious Plugin
 use Mojo::Base 'Mojolicious::Plugin';
 
 our $VERSION = '0.04';
@@ -176,10 +177,6 @@ sub is_string {
 __END__
 
 =encoding utf8
-
-=head1 NAME
-
-Mojolicious::Plugin::SecurityHeader - Mojolicious Plugin
 
 =head1 SYNOPSIS
 
