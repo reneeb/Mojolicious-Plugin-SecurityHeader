@@ -12,6 +12,7 @@ sub register {
     my @headers_list = qw(
         Strict-Transport-Security Public-Key-Pins Referrer-Policy 
         X-Content-Type-Options X-Frame-Options X-Xss-Protection
+        Content-Security-Policy
     );
 
     my %valid_headers;
@@ -30,9 +31,10 @@ sub register {
              "strict-origin-when-cross-origin",
              "unsafe-url"
          ],
-         'X-Content-Type-Options' => ['nosniff'],
-         'X-Xss-Protection'       => \&check_xp,
-         'X-Frame-Options'        => \&check_fo,
+         'X-Content-Type-Options'  => ['nosniff'],
+         'X-Xss-Protection'        => \&check_xp,
+         'X-Frame-Options'         => \&check_fo,
+         'Content-Security-Policy' => \&check_csp,
     );
 
     my %options = (
@@ -45,6 +47,7 @@ sub register {
         'X-Content-Type-Options'    => "nosniff",
         'X-Xss-Protection'          => '1; mode=block',
         'X-Frame-Options'           => 'DENY',
+        'Content-Security-Policy'   => "default-src 'self'",
     );
 
     my %security_headers;
@@ -88,6 +91,21 @@ sub register {
             $c->res->headers->header( $header_name => $security_headers{$header_name} );
         }
     });
+}
+
+sub check_csp {
+    my ($value, $options) = @_;
+
+    my $option = '';
+
+    if ( ref $value ) {
+       for my $key ( reverse sort keys %{ $value || {} } ) {
+           my $tmp_value = $value->{$key};
+           $option .= sprintf "%s-src %s; ", $key, $tmp_value;
+       }
+    }
+
+    return $option;
 }
 
 sub check_sts {
