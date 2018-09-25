@@ -2,7 +2,7 @@ package Mojolicious::Plugin::SecurityHeader;
 # ABSTRACT: Mojolicious Plugin
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 sub register {
     my ($self, $app, $headers) = @_;
@@ -63,6 +63,7 @@ sub register {
                $security_headers{$last_header} = $header_value // $headers_default{$last_header};
            }
 
+           undef $header_value;
            $last_header = $header;
        }
        elsif ( $last_header ) {
