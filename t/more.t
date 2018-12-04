@@ -5,7 +5,8 @@ use Mojolicious::Lite;
 use Test::Mojo;
 
 plugin 'SecurityHeader' => [
-    'Content-Security-Policy' => 'hallo',
+    'invalid',
+    undef,
 ];
 
 get '/' => sub {
@@ -14,8 +15,6 @@ get '/' => sub {
 };
 
 my $t = Test::Mojo->new;
-$t->get_ok('/')->status_is(200)
-  ->header_isnt( 'Content-Security-Policy', 'hallo' )
-;
+$t->get_ok('/')->status_is(200)->content_is('Hello Mojo!');
 
 done_testing();

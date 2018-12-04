@@ -5,7 +5,7 @@ use Mojolicious::Lite;
 use Test::Mojo;
 
 plugin 'SecurityHeader' => [
-    'Content-Security-Policy' => 'hallo',
+    'Access-Control-Allow-Credentials' => 'hallo',
 ];
 
 get '/' => sub {
@@ -15,7 +15,7 @@ get '/' => sub {
 
 my $t = Test::Mojo->new;
 $t->get_ok('/')->status_is(200)
-  ->header_isnt( 'Content-Security-Policy', 'hallo' )
+  ->header_isnt( 'Access-Control-Allow-Credentials', 'hallo' )
 ;
 
 done_testing();

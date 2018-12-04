@@ -37,6 +37,12 @@ version 0.05
 - X-Content-Type-Options
 - X-Frame-Options
 - X-Xss-Protection
+- Access-Control-Allow-Origin
+- Access-Control-Expose-Headers
+- Access-Control-Max-Age
+- Access-Control-Allow-Credentials
+- Access-Control-Allow-Methods
+- Access-Control-Allow-Headers
 
 # METHODS
 
@@ -49,13 +55,19 @@ version 0.05
 
 Register plugin in [Mojolicious](https://metacpan.org/pod/Mojolicious) application.
 
+# CORS SUPPORT
+
+Since version 0.06 this plugin also supports [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+There's already [Mojolicious::Plugin::CORS](https://metacpan.org/pod/Mojolicious::Plugin::CORS), but unlike that module, with the `SecurityHeader` plugin all
+CORS related headers are configurable.
+
 # SEE ALSO
 
-[Mojolicious](https://metacpan.org/pod/Mojolicious), [Mojolicious::Guides](https://metacpan.org/pod/Mojolicious::Guides), [http://mojolicious.org](http://mojolicious.org).
+[Mojolicious](https://metacpan.org/pod/Mojolicious), [Mojolicious::Guides](https://metacpan.org/pod/Mojolicious::Guides), [http://mojolicious.org](http://mojolicious.org). [Mojolicious::Plugin::CORS](https://metacpan.org/pod/Mojolicious::Plugin::CORS)
 
 
 
-## Development
+# Development
 
 The distribution is contained in a Git repository, so simply clone the
 repository
@@ -101,7 +113,7 @@ $ dzil test --author --release
 
 # AUTHOR
 
-Renee Baecker &lt;reneeb@cpan.org>
+Renee Baecker <reneeb@cpan.org>
 
 # COPYRIGHT AND LICENSE
 

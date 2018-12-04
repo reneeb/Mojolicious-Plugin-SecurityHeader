@@ -3,9 +3,10 @@ use Mojo::Base -strict;
 use Test::More;
 use Mojolicious::Lite;
 use Test::Mojo;
+use Data::Dumper;
 
 plugin 'SecurityHeader' => [
-    'Content-Security-Policy' => 'hallo',
+    'Access-Control-Max-Age'
 ];
 
 get '/' => sub {
@@ -14,8 +15,6 @@ get '/' => sub {
 };
 
 my $t = Test::Mojo->new;
-$t->get_ok('/')->status_is(200)
-  ->header_isnt( 'Content-Security-Policy', 'hallo' )
-;
+$t->get_ok('/')->status_is(200)->header_is( 'Access-Control-Max-Age', undef );
 
 done_testing();
