@@ -95,7 +95,7 @@ sub register {
             elsif ( $ref eq 'ARRAY' ) {
                 ($header_value) = grep{ $header_value eq $_ }@{ $values{$last_header} };
 
-                undef $last_header if !$header_value;
+                undef $last_header if !defined $header_value;
             }
             else {
                 undef $last_header if $header_value ne $values{$last_header};
