@@ -4,7 +4,7 @@ package Mojolicious::Plugin::SecurityHeader;
 
 use Mojo::Base 'Mojolicious::Plugin';
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 sub register {
     my ($self, $app, $headers) = @_;
