@@ -128,13 +128,17 @@ sub _is_int {
 sub _check_methods {
     my ($value, $options) = @_;
 
-    return           if !defined $value;
+    return if !defined $value;
+
+    my @methods = qw(GET DELETE POST PATCH OPTIONS HEAD CONNECT TRACE PUT);
+    if ( !ref $value && $value eq '*' ) {
+        return join ', ', @methods;
+    }
+
     return uc $value if !ref $value;
     return           if 'ARRAY' ne ref $value;
 
-    my @methods = qw(GET DELETE POST PATCH OPTIONS HEAD CONNECT TRACE PUT);
     my %allowed = map{ $_ => 1 }@methods;
-
     my $return = join ', ', map{ defined $_ && $allowed{uc $_} ? uc $_ : () }@{$value};
 
     return $return || undef;
