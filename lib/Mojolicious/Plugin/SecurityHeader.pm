@@ -14,7 +14,7 @@ sub register {
     return if 'ARRAY' ne ref $headers;
 
     my @headers_list = qw(
-        Strict-Transport-Security Referrer-Policy 
+        Strict-Transport-Security Public-Key-Pins Referrer-Policy 
         X-Content-Type-Options X-Frame-Options X-Xss-Protection
         Content-Security-Policy Access-Control-Allow-Origin
         Access-Control-Expose-Headers Access-Control-Max-Age
@@ -37,6 +37,7 @@ sub register {
         'Access-Control-Max-Age'           => \&_is_int,
         'Access-Control-Allow-Credentials' => 'true',
         'Strict-Transport-Security'        => \&_check_sts,
+        'Public-Key-Pins'                  => \&_check_list,
         'Referrer-Policy'                  => [
             "",
             "no-referrer",
@@ -56,6 +57,7 @@ sub register {
 
     my %headers_default = (
         'Referrer-Policy'                  => "",
+        'Public-Key-Pins'                  => "",
         'Strict-Transport-Security'        => "max-age=31536000",
         'X-Content-Type-Options'           => "nosniff",
         'X-Xss-Protection'                 => '1; mode=block',
