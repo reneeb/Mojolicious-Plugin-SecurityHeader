@@ -19,7 +19,7 @@ sub register {
         Content-Security-Policy Access-Control-Allow-Origin
         Access-Control-Expose-Headers Access-Control-Max-Age
         Access-Control-Allow-Credentials Access-Control-Allow-Methods
-        Access-Control-Allow-Headers
+        Access-Control-Allow-Headers Cross-Origin-Resource-Policy
     );
 
     my %valid_headers;
@@ -36,6 +36,11 @@ sub register {
         'Access-Control-Expose-Headers'    => \&_check_list,
         'Access-Control-Max-Age'           => \&_is_int,
         'Access-Control-Allow-Credentials' => 'true',
+        'Cross-Origin-Resource-Policy'     => [
+            "same-origin",
+            "same-site",
+            "cross-origin"
+        ],
         'Strict-Transport-Security'        => \&_check_sts,
         'Public-Key-Pins'                  => \&_check_list,
         'Referrer-Policy'                  => [
@@ -65,6 +70,7 @@ sub register {
         'Content-Security-Policy'          => "default-src 'self'",
         'Access-Control-Allow-Origin'      => '*',
         'Access-Control-Allow-Credentials' => 'true',
+        'Cross-Origin-Resource-Policy'     => 'same-origin',
     );
 
     my %security_headers;
